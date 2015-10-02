@@ -73,11 +73,16 @@ Vagrant.configure(2) do |config|
     sudo yum update
     sudo yum upgrade
     sudo yum groupinstall -y 'Development Tools'
-    sudo yum install -y python-devel libffi-devel openssl-devel  wget snappy
+    sudo yum install -y python-devel libffi-devel openssl-devel  wget snappy-devel
     sudo wget https://bootstrap.pypa.io/get-pip.py
     sudo python get-pip.py --force-reinstall # --install-option="--install-scripts=/usr/bin"
     # cf http://stackoverflow.com/questions/29134512/insecureplatformwarning-a-true-sslcontext-object-is-not-available-this-prevent
     sudo pip install pyopenssl ndg-httpsclient pyasn1
   SHELL
 
+   # project specific config
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo pip install python-snappy
+    sudo pip install kafka-python
+  SHELL
 end
