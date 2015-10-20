@@ -60,3 +60,4 @@ target/
 #XXX
 .idea/**
 .vagrant/**
+*.tgz

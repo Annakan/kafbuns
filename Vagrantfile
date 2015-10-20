@@ -80,6 +80,8 @@ Vagrant.configure(2) do |config|
     sudo pip install pyopenssl ndg-httpsclient pyasn1
   SHELL
 
+   config.vm.provision :shell, path: "install_kafka.sh"
+
    # project specific config
   config.vm.provision "shell", inline: <<-SHELL
     sudo pip install python-snappy
